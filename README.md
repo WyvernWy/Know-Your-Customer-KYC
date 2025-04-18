@@ -1,6 +1,6 @@
-# Know-Your-Customer-KYC Project
+# Know-Your-Customer-KYC Project 
+  - a Practice AWS microservice soultion
 
-# Practice AWS microservice soultion
 ## Objectives:
 The solution validates customer documents submitted by a mobile application. The input documents include a comma-separated values (.csv) file containing customer application information, a customer selfie photo, and a copy of the customer's driver's license. Then the solution will perform the following validations: 
   - The customer's information submitted in the application must match the information on the driver's license.
