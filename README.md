@@ -10,13 +10,13 @@ The solution validates customer documents submitted by a mobile application. The
 
 
 ## Required AWS services and functions:
-- S3 bucket: store the application information customers submited
-- AWS Lambda function: unzip customer's information package and process the information. The function compares the extracted data (name, address, date of birth) with the customer information. It also sends requests to Amazon Rekognition, Amazon Textract, and Amazon Simple Queue Service (Amazon SQS) for additional validations.
-- Amazon DynamoDB table: store the information a customer submits to the application. 
-- Amazon SNS topic: send notifications about the status of customers' applications.
-- Amazon Rekognition: Lambda function will call Amazon Rekognition to compare the selfie and driver's license photos submitted by the customer. Next, it will update the DynamoDB table and publish Amazon SNS notifications based on the results of the comparison.
-- Amazon Textract: Lambda function will call Amazon Textract to verify that the license image information matches the customer details.
-- IAM role: create an AWS Identity and Access Management (IAM) role for each of the Lambda functions in this solution, following the principle of least privilege.
+- **S3 bucket**: store the application information customers submited
+- **AWS Lambda function**: unzip customer's information package and process the information. The function compares the extracted data (name, address, date of birth) with the customer information. It also sends requests to Amazon Rekognition, Amazon Textract, and Amazon Simple Queue Service (Amazon SQS) for additional validations.
+- **Amazon DynamoDB table**: store the information a customer submits to the application. 
+- **Amazon SNS topic**: send notifications about the status of customers' applications.
+- **Amazon Rekognition**: Lambda function will call Amazon Rekognition to compare the selfie and driver's license photos submitted by the customer. Next, it will update the DynamoDB table and publish Amazon SNS notifications based on the results of the comparison.
+- **Amazon Textract**: Lambda function will call Amazon Textract to verify that the license image information matches the customer details.
+- **IAM role**: create an AWS Identity and Access Management (IAM) role for each of the Lambda functions in this solution, following the principle of least privilege.
 
 
 ## Solution Approaches:
