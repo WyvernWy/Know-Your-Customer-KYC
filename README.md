@@ -1,7 +1,13 @@
-# Know-Your-Customer-KYC
+# Know-Your-Customer-KYC Project
 
-# Lab 06
+# Practice AWS microservice soultion
 ## Objectives:
+The solution validates customer documents submitted by a mobile application. The input documents include a comma-separated values (.csv) file containing customer application information, a customer selfie photo, and a copy of the customer's driver's license. Then the solution will perform the following validations: 
+  - The customer's information submitted in the application must match the information on the driver's license.
+  - The customer's selfie and driver's license photos must match.
+  - The customer's information must match the data stored by an independent third-party driver's license validation service.
+
+## Solution Approaches:
 Using AWS Lamda with AWS SDK for Python (Boto3) to create a function that compare the customer's ID with corresponding information submitted by the customer. Based on the result of comparison, the Lambda function must add a new key-value pair in the DynamoDB table with the result and also send an Amazon SNS notification.
 
 ## How to use:
