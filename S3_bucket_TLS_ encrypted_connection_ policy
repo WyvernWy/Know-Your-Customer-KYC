@@ -1,4 +1,3 @@
-
 {
     "_comment": "Replace both BUCKET_NAME_HERE with the name of S3 bucket you created.",
     "Version": "2012-10-17",
