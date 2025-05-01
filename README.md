@@ -24,7 +24,8 @@ Create an S3 bucket to store the customers’ application documents.
 - Make sure the Bucket is encrypted. Suggested "Server-side encryption with Amazon S3 managed keys (SSE-S3)" for encryption.
 - The bucket should not be public. "Block all public access" option should be selected.
 
-## Step2. 
+## Step2. Create an IAM role
+AWS Lambda function needs an IAM execution role with the required permissions to process the customer’s documents.
 
 
 ## Solution Approaches:
