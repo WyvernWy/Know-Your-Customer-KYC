@@ -1,0 +1,22 @@
+
+{
+    "_comment": "Replace both BUCKET_NAME_HERE with the name of S3 bucket you created.",
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Sid": "Allow SSL Requests Only",
+        "Action": "s3:*",
+        "Effect": "Deny",
+        "Resource": [
+        "arn:aws:s3:::BUCKET_NAME_HERE",
+        "arn:aws:s3:::BUCKET_NAME_HERE/*"
+        ],
+        "Principal": "*",
+        "Condition": {
+            "Bool": {
+            "aws:SecureTransport": "false"
+            }
+        }
+    }
+    ]
+}
