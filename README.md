@@ -19,6 +19,14 @@ The solution validates customer documents submitted by a mobile application. The
 - **IAM role**: create an AWS Identity and Access Management (IAM) role for each of the Lambda functions in this solution, following the principle of least privilege.
 
 
+## Step1. Create an S3 bucket
+Create an S3 bucket to store the customers’ application documents.
+- Make sure the Bucket is encrypted. Suggested "Server-side encryption with Amazon S3 managed keys (SSE-S3)" for encryption.
+- The bucket should not be public. "Block all public access" option should be selected.
+
+## Step2. 
+
+
 ## Solution Approaches:
 Using AWS Lamda with AWS SDK for Python (Boto3) to create a function that compare the customer's ID with corresponding information submitted by the customer. Based on the result of comparison, the Lambda function must add a new key-value pair in the DynamoDB table with the result and also send an Amazon SNS notification.
 
