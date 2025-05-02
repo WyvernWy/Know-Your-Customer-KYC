@@ -1,5 +1,6 @@
 {
     "_comment":"replace the BUCKET_NAME with the name of your document bucket."
+    "_comment":"replace the TABLE_ARN with your DynamoDB table ARN." 
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -11,6 +12,15 @@
                 "s3:DeleteObject"
             ],
             "Resource": "arn:aws:s3:::INSERT_BUCKET_NAME/*"
+        },
+        {
+            "Sid": "DynamoDBPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem"
+            ],
+            "Resource": "TABLE_ARN"
         }
     ]
 }
