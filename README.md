@@ -1,5 +1,5 @@
 # Know-Your-Customer-KYC Project 
-  - a Practice AWS microservice soultion
+  -　A Practice AWS microservice solution
 
 
 ## Objectives:
