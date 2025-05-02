@@ -27,6 +27,9 @@ Create an S3 bucket to store the customers’ application documents.
 ## Step2. Create an IAM role
 AWS Lambda function needs an IAM execution role with the required permissions to process the customer’s documents.
 
+## Step3. Create a DynamoDB table
+Create a DynamoDB table to store the customers’ information that was uploaded by the application and processed by AWS Lambda functions.
+
 
 ## Solution Approaches:
 Using AWS Lamda with AWS SDK for Python (Boto3) to create a function that compare the customer's ID with corresponding information submitted by the customer. Based on the result of comparison, the Lambda function must add a new key-value pair in the DynamoDB table with the result and also send an Amazon SNS notification.
