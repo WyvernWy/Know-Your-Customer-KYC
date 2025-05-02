@@ -36,20 +36,20 @@ Resources:
 #-----Start Document bucket policy -----#
   DocumentBucketPolicy:
     Type: AWS::S3::BucketPolicy
-    Properties: 
+    Properties:
       Bucket: !Ref DocumentBucket
       PolicyDocument:
         Version: 2012-10-17
         Statement:
           - Action: s3:*
             Effect: Deny
-            Resource: 
+            Resource:
               - !Sub arn:aws:s3:::${DocumentBucket}
               - !Sub arn:aws:s3:::${DocumentBucket}/*
             Principal: '*'
             Condition:
-              Bool: 
-                'aws:SecureTransport': 
+              Bool:
+                'aws:SecureTransport':
                   - false
 #-----End Document bucket policy -----#
 
@@ -67,7 +67,7 @@ Resources:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:
-        - 
+        -
           AttributeName: APP_UUID
           AttributeType: S
       KeySchema:
@@ -101,30 +101,30 @@ Resources:
       ScalableDimension: dynamodb:table:ReadCapacityUnits
       ServiceNamespace: dynamodb
 
-  TableWriteScalingPolicy: 
+  TableWriteScalingPolicy:
     Type: "AWS::ApplicationAutoScaling::ScalingPolicy"
-    Properties: 
+    Properties:
       PolicyName: WriteAutoScalingPolicy
       PolicyType: TargetTrackingScaling
       ScalingTargetId: !Ref DDBWriteAutoScaling
-      TargetTrackingScalingPolicyConfiguration: 
+      TargetTrackingScalingPolicyConfiguration:
         TargetValue: 70
         ScaleInCooldown: 2
         ScaleOutCooldown: 2
-        PredefinedMetricSpecification: 
+        PredefinedMetricSpecification:
           PredefinedMetricType: DynamoDBWriteCapacityUtilization
 
-  TableReadScalingPolicy: 
+  TableReadScalingPolicy:
     Type: "AWS::ApplicationAutoScaling::ScalingPolicy"
-    Properties: 
+    Properties:
       PolicyName: ReadAutoScalingPolicy
       PolicyType: TargetTrackingScaling
       ScalingTargetId: !Ref DDBReadAutoScaling
-      TargetTrackingScalingPolicyConfiguration: 
+      TargetTrackingScalingPolicyConfiguration:
         TargetValue: 70
         ScaleInCooldown: 2
         ScaleOutCooldown: 2
-        PredefinedMetricSpecification: 
+        PredefinedMetricSpecification:
           PredefinedMetricType: DynamoDBReadCapacityUtilization
 #-----End - DDB for customer metadata with auto-scaling-----#
 
@@ -134,18 +134,18 @@ Resources:
     Properties:
       QueueName: LicenseQueue
       VisibilityTimeout: 300
-      RedrivePolicy: 
+      RedrivePolicy:
         deadLetterTargetArn: !GetAtt LicenseDeadLetterQueue.Arn
         maxReceiveCount: 5
 
   LicenseDeadLetterQueue:
     Type: AWS::SQS::Queue
-    Properties: 
+    Properties:
       QueueName: LicenseDeadLetterQueue
 #-----End - SQS, Lambda trigger and DLQ -----#
 
   UnzipLambdaFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       FunctionName: UnzipLambdaFunction
       Role: !Sub arn:aws:iam::${AWS::AccountId}:role/UnzipLambdaRole
@@ -155,7 +155,7 @@ Resources:
       Tracing: Active
 
   WriteToDynamoLambdaFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       FunctionName: WriteToDynamoLambdaFunction
       Role: !Sub arn:aws:iam::${AWS::AccountId}:role/WriteToDynamoLambdaRole
@@ -168,7 +168,7 @@ Resources:
       Tracing: Active
 
   CompareFacesLambdaFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       FunctionName: CompareFacesLambdaFunction
       Role: !Sub arn:aws:iam::${AWS::AccountId}:role/CompareFacesLambdaRole
@@ -182,7 +182,7 @@ Resources:
       Tracing: Active
 
   CompareDetailsLambdaFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       FunctionName: CompareDetailsLambdaFunction
       Role: !Sub arn:aws:iam::${AWS::AccountId}:role/CompareDetailsLambdaRole
@@ -194,7 +194,7 @@ Resources:
       Handler: app.lambda_handler
       Runtime: python3.12
       Tracing: Active
-  
+
 #-----Start - Validate License Lambda function and API-----#
   HttpApi:
     Type: AWS::Serverless::HttpApi
@@ -202,7 +202,7 @@ Resources:
       StageName: "$default"
 
   ValidateLicenseLambdaFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       FunctionName: ValidateLicenseLambdaFunction
       Role: !Sub arn:aws:iam::${AWS::AccountId}:role/ValidateLicenseLambdaRole
@@ -219,7 +219,7 @@ Resources:
 #-----End - Validate License Lambda function and API-----#
 #-----Start - Submit License Lambda function -----#
   SubmitLicenseLambdaFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       FunctionName: SubmitLicenseLambdaFunction
       Role: !Sub arn:aws:iam::${AWS::AccountId}:role/SubmitLicenseLambdaRole
