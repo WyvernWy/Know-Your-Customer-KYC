@@ -32,5 +32,9 @@ Create a new IAM role and configure the permissions policy using the JSON file "
 Create a DynamoDB table to store the customers’ information that was uploaded by the application and processed by AWS Lambda functions.
 
 ## Step4. Finish deploy in AWS Cloud9
+Now copy all folders contaning the app.py scripts along with the template.yaml into the AWS Cloud9 environment.
+In the AWS Cloud9 bash terminal, run command "sam build && sam deploy".
 
-
+Now we have all the AWS Lambda functions, S3 bucekt, and DynamoDB table ready.
+Please upload a zip file, to the S3 bucket, that contains an image copy of applicants' driver's license, a selfie image, and application detail.
+The Lambda functions will automatically unzip the files and compare face and texts between those files and reture result into the DynamoDB table.
