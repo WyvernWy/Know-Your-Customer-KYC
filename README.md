@@ -26,6 +26,7 @@ Create an S3 bucket to store the customers’ application documents.
 
 ## Step2. Create an IAM role
 AWS Lambda function needs an IAM execution role with the required permissions to process the customer’s documents.
+Create a new IAM role and configure the permissions policy using the JSON file "IAM_Role_Permissions". Then, attach the permissions policy to the IAM role.
 
 ## Step3. Create a DynamoDB table
 Create a DynamoDB table to store the customers’ information that was uploaded by the application and processed by AWS Lambda functions.
