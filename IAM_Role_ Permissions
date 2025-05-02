@@ -24,6 +24,22 @@
         }
         {
             "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:INSERT_LAB_REGION:INSERT_ACCOUNT_ID:*"
+        },
+
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:INSERT_LAB_REGION:INSERT_ACCOUNT_ID:log-group:/aws/lambda/DocumentLambdaFunction:*"
+            ]
+        }
+        {
+            "Effect": "Allow",
             "Action": [
                 "textract:AnalyzeID"
             ],
