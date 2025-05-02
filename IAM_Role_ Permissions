@@ -1,6 +1,8 @@
 {
     "_comment":"replace the BUCKET_NAME with the name of your document bucket."
     "_comment":"replace the TABLE_ARN with your DynamoDB table ARN." 
+    "_comment":"replace the REGION with your AWS service Resion."
+    "_comment":"replace the ACCOUNT_ID with your AccountId."
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -11,7 +13,7 @@
                 "s3:GetObject",
                 "s3:DeleteObject"
             ],
-            "Resource": "arn:aws:s3:::INSERT_BUCKET_NAME/*"
+            "Resource": "arn:aws:s3:::BUCKET_NAME/*"
         },
         {
             "Sid": "DynamoDBPermissions",
@@ -25,7 +27,7 @@
         {
             "Effect": "Allow",
             "Action": "logs:CreateLogGroup",
-            "Resource": "arn:aws:logs:INSERT_LAB_REGION:INSERT_ACCOUNT_ID:*"
+            "Resource": "arn:aws:logs:REGION:ACCOUNT_ID:*"
         },
 
         {
@@ -35,7 +37,7 @@
                 "logs:PutLogEvents"
             ],
             "Resource": [
-                "arn:aws:logs:INSERT_LAB_REGION:INSERT_ACCOUNT_ID:log-group:/aws/lambda/DocumentLambdaFunction:*"
+                "arn:aws:logs:REGION:ACCOUNT_ID:log-group:/aws/lambda/KYC:*"
             ]
         }
         {
