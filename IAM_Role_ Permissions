@@ -22,5 +22,12 @@
             ],
             "Resource": "TABLE_ARN"
         }
+        {
+            "Effect": "Allow",
+            "Action": [
+                "textract:AnalyzeID"
+            ],
+            "Resource": "*"
+        }
     ]
 }
