@@ -1,5 +1,5 @@
 # Know-Your-Customer-KYC Project 
-  -　A Practice AWS microservice solution
+Thank you for opening this Project! This is a practice AWS microservice solution created and implemented following the AWS Cloude Institue - Developer Intermediate course. This repository contains codes and instructions to deploy the solution.
 
 
 ## Objectives:
