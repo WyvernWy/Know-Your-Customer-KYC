@@ -40,7 +40,8 @@ The solution performs the following validations:
 
 ### 4. Deploy via AWS Cloud9
 - Copy all folders (including app.py and template.yaml) to your Cloud9 environment.
-- Run in the terminal: sam build && sam deploy
+- Run in the terminal:
+  - sam build && sam deploy
 
 ## Testing
 Upload a ZIP file to the S3 bucket containing:
