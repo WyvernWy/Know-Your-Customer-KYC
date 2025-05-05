@@ -6,6 +6,7 @@ The solution validates customer documents submitted via a mobile application. In
 - A **CSV** file with customer application details.
 - A **customer selfie photo**.
 - A **copy of the driver's license**.
+
 The solution performs the following validations:
 - **Data Consistency**: The application details must match the driver's license information.
 - **Photo Matching**: The selfie and driver’s license photos must match (using facial recognition).
@@ -22,31 +23,32 @@ The solution performs the following validations:
 - **IAM role**: create an AWS Identity and Access Management (IAM) role for each of the Lambda functions in this solution, following the principle of least privilege.
 
 ## Deployment Steps
-1. Create an S3 Bucket
-- Purpose: Store customer documents.
-- Requirements:
+### 1. Create an S3 Bucket
+- **Purpose**: Store customer documents.
+- **Requirements**:
   - Enable server-side encryption (SSE-S3 recommended).
   - Block all public access.
 
-2. Create an IAM Role
-- Purpose: Grant Lambda permissions to process documents.
-- Steps:
+### 2. Create an IAM Role
+- **Purpose**: Grant Lambda permissions to process documents.
+- **Steps**:
   1. Create a new IAM role.
   2. Attach the IAM_Role_Permissions JSON policy.
 
-3. Create a DynamoDB Table
-- Purpose: Store processed customer data.
+### 3. Create a DynamoDB Table
+- **Purpose**: Store processed customer data.
 
-4. Deploy via AWS Cloud9
+### 4. Deploy via AWS Cloud9
 - Copy all folders (including app.py and template.yaml) to your Cloud9 environment.
 - Run in the terminal: sam build && sam deploy
 
 ## Testing
 Upload a ZIP file to the S3 bucket containing:
-Driver’s license image.
-Selfie image.
-Application details (CSV).
+- Driver’s license image.
+- Selfie image.
+- Application details (CSV).
+
 The Lambda functions will:
-Unzip the files.
-Validate faces/texts.
-Store results in DynamoDB.
+- Unzip the files and store unzipped files back into S3.
+- Validate faces/texts.
+- Store results in DynamoDB.
