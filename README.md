@@ -1,12 +1,15 @@
-# Know-Your-Customer-KYC Project 
-Thank you for opening this Project! This is a practice AWS microservice solution created and implemented following the AWS Cloude Institue - Developer Intermediate course. This repository contains codes and instructions to deploy the solution.
-
+# Know-Your-Customer (KYC) Project
+Thank you for checking out this project! This is a practice AWS microservice solution developed as part of the AWS Cloud Institute - Developer Intermediate course. The repository contains code and deployment instructions.
 
 ## Objectives:
-The solution validates customer documents submitted by a mobile application. The input documents include a comma-separated values (.csv) file containing customer application information, a customer selfie photo, and a copy of the customer's driver's license. Then the solution will perform the following validations: 
-  - The customer's information submitted in the application must match the information on the driver's license.
-  - The customer's selfie and driver's license photos must match.
-  - The customer's information must match the data stored by an independent third-party driver's license validation service.
+The solution validates customer documents submitted via a mobile application. Input documents include:
+- A **CSV** file with customer application details.
+- A **customer selfie photo**.
+- A **copy of the driver's license**.
+The solution performs the following validations:
+- **Data Consistency**: The application details must match the driver's license information.
+- **Photo Matching**: The selfie and driver’s license photos must match (using facial recognition).
+- **Third-Party Verification**: The submitted data must align with an independent driver’s license validation service.
 
 
 ## Required AWS services and functions:
@@ -18,23 +21,32 @@ The solution validates customer documents submitted by a mobile application. The
 - **Amazon Textract**: Lambda function will call Amazon Textract to verify that the license image information matches the customer details.
 - **IAM role**: create an AWS Identity and Access Management (IAM) role for each of the Lambda functions in this solution, following the principle of least privilege.
 
+## Deployment Steps
+1. Create an S3 Bucket
+- Purpose: Store customer documents.
+- Requirements:
+  - Enable server-side encryption (SSE-S3 recommended).
+  - Block all public access.
 
-## Step1. Create an S3 bucket
-Create an S3 bucket to store the customers’ application documents.
-- Make sure the Bucket is encrypted. Suggested "Server-side encryption with Amazon S3 managed keys (SSE-S3)" for encryption.
-- The bucket should not be public. "Block all public access" option should be selected.
+2. Create an IAM Role
+- Purpose: Grant Lambda permissions to process documents.
+- Steps:
+  1. Create a new IAM role.
+  2. Attach the IAM_Role_Permissions JSON policy.
 
-## Step2. Create an IAM role
-AWS Lambda function needs an IAM execution role with the required permissions to process the customer’s documents.
-Create a new IAM role and configure the permissions policy using the JSON file "IAM_Role_Permissions". Then, attach the permissions policy to the IAM role.
+3. Create a DynamoDB Table
+- Purpose: Store processed customer data.
 
-## Step3. Create a DynamoDB table
-Create a DynamoDB table to store the customers’ information that was uploaded by the application and processed by AWS Lambda functions.
+4. Deploy via AWS Cloud9
+- Copy all folders (including app.py and template.yaml) to your Cloud9 environment.
+- Run in the terminal: sam build && sam deploy
 
-## Step4. Finish deploy in AWS Cloud9
-Now copy all folders contaning the app.py scripts along with the template.yaml into the AWS Cloud9 environment.
-In the AWS Cloud9 bash terminal, run command "sam build && sam deploy".
-
-Now we have all the AWS Lambda functions, S3 bucekt, and DynamoDB table ready.
-Please upload a zip file, to the S3 bucket, that contains an image copy of applicants' driver's license, a selfie image, and application detail.
-The Lambda functions will automatically unzip the files and compare face and texts between those files and reture result into the DynamoDB table.
+## Testing
+Upload a ZIP file to the S3 bucket containing:
+Driver’s license image.
+Selfie image.
+Application details (CSV).
+The Lambda functions will:
+Unzip the files.
+Validate faces/texts.
+Store results in DynamoDB.
