@@ -13,14 +13,14 @@ The solution performs the following validations:
 - **Third-Party Verification**: The submitted data must align with an independent driver’s license validation service.
 
 
-## Required AWS services and functions:
-- **S3 bucket**: store the application information customers submited
-- **AWS Lambda function**: unzip customer's information package and process the information. The function compares the extracted data (name, address, date of birth) with the customer information. It also sends requests to Amazon Rekognition, Amazon Textract, and Amazon Simple Queue Service (Amazon SQS) for additional validations.
-- **Amazon DynamoDB table**: store the information a customer submits to the application. 
-- **Amazon SNS topic**: send notifications about the status of customers' applications.
-- **Amazon Rekognition**: Lambda function will call Amazon Rekognition to compare the selfie and driver's license photos submitted by the customer. Next, it will update the DynamoDB table and publish Amazon SNS notifications based on the results of the comparison.
-- **Amazon Textract**: Lambda function will call Amazon Textract to verify that the license image information matches the customer details.
-- **IAM role**: create an AWS Identity and Access Management (IAM) role for each of the Lambda functions in this solution, following the principle of least privilege.
+## Required AWS Services and Functions:
+- **S3 Bucket**: Stores the application information customers submit.
+- **AWS Lambda Function**: Unzips the customer's information package and processes the data. The function compares extracted details (name, address, date of birth) with the submitted information and triggers additional validations via:
+  - **Amazon Rekognition**: Compares the selfie and driver’s license photos.
+  - **Amazon Textract**: Validates license image text against customer details.
+  - **Amazon SQS**: Queues validation tasks.
+- **Amazon DynamoDB Table**: Stores customer-submitted application data.
+- **IAM Role**: Secures each Lambda function with least-privilege permissions.
 
 ## Deployment Steps
 ### 1. Create an S3 Bucket
