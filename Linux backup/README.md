@@ -2,7 +2,8 @@
 This is a Bash script that backs up files from your input directory to the destination you defined.
 
 ## How to use
-**Basic usage with defaults:** (Backups all files in Documents folder to Backups folder under HOME directory.)
+**Basic usage with defaults:** 
+(Backups all files in Documents folder to Backups folder under HOME directory.)
 
 ./backup_script.sh
 
