@@ -1,0 +1,38 @@
+aws rds create-db-instance 
+--engine "postgres" 
+--engine-version "15.13" 
+--engine-lifecycle-support "open-source-rds-extended-support-disabled" 
+--db-instance-identifier "dbinstance" 
+--master-username "postgres" 
+--db-instance-class "db.t4g.micro" 
+--db-subnet-group-name "rds-ec2-db-subnet-group-1" 
+--db-name “postgres” 
+--character-set-name 'null' 
+--nchar-character-set-name 'null' 
+--vpc-security-group-ids "sg-04f569def9c208ee2" "sg-0a5ce1427c38b28b5" 
+--db-security-groups 'null' 
+--availability-zone "ap-northeast-1a" 
+--port "5432" --storage-type "gp2" 
+--allocated-storage "20" --iops 'null' 
+--storage-throughput 'null' 
+--kms-key-id 'null' 
+--preferred-maintenance-window 'null' 
+--preferred-backup-window 'null' 
+--backup-retention-period "1" 
+--monitoring-interval "0" 
+--domain 'null' 
+--domain-iam-role-name 'null' 
+--domain-fqdn 'null' 
+--domain-ou 'null' 
+--domain-auth-secret-arn 'null' 
+--domain-dns-ips 'null' 
+--db-parameter-group-name "default.postgres15" 
+--option-group-name "default:postgres-15" 
+--timezone 'null' 
+--processor-features 'null' 
+--max-allocated-storage "1000" 
+--network-type "IPV4" 
+--backup-target 'null' 
+--ca-certificate-identifier "rds-ca-rsa2048-g1" 
+--master-user-password "postgres" 
+--database-insights-mode "standard" 
