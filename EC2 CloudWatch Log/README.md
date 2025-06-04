@@ -1,7 +1,7 @@
 ## Subject
 This Section guides the steps of importing EC2 logs into CloudWatch.
 
-## IAM Role and permission required.
+## IAM Role and Permission Required
 ```json
 {
 	"Version": "2012-10-17",
