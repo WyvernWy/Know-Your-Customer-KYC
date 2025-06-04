@@ -3,10 +3,10 @@ Install the CloudWatch Agent
 SSH into your EC2 instance and run:
 sudo yum install amazon-cloudwatch-agent -y
 
-
-Configure the Agent
+Configure the Agent:
 sudo nano /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
 
+// Copy the following JSON script into the configuration file.
 {
   "logs": {
     "logs_collected": {
@@ -28,10 +28,8 @@ sudo nano /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
   }
 }
 
-Start the Agent
-
+Start the Agent:
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
-
 
 Check agent status:
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
@@ -42,8 +40,8 @@ aws logs get-log-events \
   --log-stream-name "i-02905489e1d7adfdd" \
   --region ap-northeast-1
 
-
-Error 1:
+Common Errors
+Error 1 - The specified log group does not exist:
 ==========================
   aws logs get-log-events \
   --log-group-name "/aws/ec2/my-instance/system" \
@@ -59,7 +57,7 @@ aws logs create-log-group \
 
 sudo systemctl restart amazon-cloudwatch-agent
 
-Error 2:
+Error 2 - The specified log stream does not exist:
 =========================
   aws logs get-log-events \
   --log-group-name "/aws/ec2/my-instance/system" \
