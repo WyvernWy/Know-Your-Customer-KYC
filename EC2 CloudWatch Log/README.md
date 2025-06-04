@@ -10,12 +10,11 @@ This Section guides the steps of importing EC2 logs into CloudWatch.
 			"Effect": "Allow",
 			"Action": [
 				"logs:GetLogEvents",
-				"logs:DescribeLogStreams",
-				"logs:DescribeLogGroups",
 				"logs:PutLogEvents",
+				"logs:DescribeLogGroups",
 				"logs:CreateLogGroup",
+				"logs:DescribeLogStreams",
 				"logs:CreateLogStream",
-				"logs:DescribeLogStreams"
 			],
 			"Resource": "*"
 		}
