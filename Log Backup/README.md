@@ -16,7 +16,7 @@ This Bash script automates the backup of log files from an EC2 instance to Amazo
 ## Installation
 1. **Copy the script** to your preferred location: (e.g., /usr/bin)
 ```bash
-sudo cp log_backup_to_s3.sh /usr/local/bin/
+sudo cp log_backup_to_s3.sh /usr/bin/
 ```
 2. **Make the script executable**:
 ```bash
