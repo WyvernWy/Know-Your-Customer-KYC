@@ -33,7 +33,7 @@ sudo systemctl start crond
 
 Edit the script to configure these variables:
 ```bash
-LOG_DIR="/var/log"               # Source directory for logs
+LOG_DIR="/var/log"                # Source directory for logs
 BACKUP_DIR="/tmp/log_backups"     # Temporary backup location
 S3_BUCKET="your-bucket-name"      # Destination S3 bucket
 S3_PATH="logs/$(hostname)"        # S3 path (includes hostname)
