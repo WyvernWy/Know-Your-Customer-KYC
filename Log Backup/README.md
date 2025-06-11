@@ -64,7 +64,7 @@ The cron time format consists of five fields:
 ## Verification
 1. **Test the script manually**:
 ```bash
-sudo /usr/local/bin/log_backup_to_s3.sh
+sudo /usr/bin/log_backup_to_s3.sh
 ```
 2. **Check the output**:
 ```bash
