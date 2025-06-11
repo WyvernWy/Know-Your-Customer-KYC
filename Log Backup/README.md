@@ -1,3 +1,4 @@
+# EC2 Log Backup to S3 Automation
 ## Function
 This is a Bash script that backs up EC2 log files in S3.
 
