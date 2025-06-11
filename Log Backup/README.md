@@ -1,6 +1,12 @@
 # EC2 Log Backup to S3 Automation
-## Function
-This is a Bash script that backs up EC2 log files in S3.
+## Overview
+This Bash script automates the backup of log files from an EC2 instance to Amazon S3. It compresses logs, organizes them by hostname, and includes cleanup functionality.
+
+## Features
+- Automated compression and backup of log files
+- Hostname-based organization in S3
+- Local backup management with configurable retention
+- Detailed logging of backup operations
 
 ## How to use
 1. Import this script file into EC2 under you preferred location (e.g., /usr/bin).
