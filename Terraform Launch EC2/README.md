@@ -8,6 +8,7 @@ This guide walks through the launch of an EC2 instance in AWS using Terraform sc
 
 ## Steps
 **1. Create a Terraform Directory**
+
 Open your AWS CloudShell terminal and run the following commands to create and move into a working directory:
 ```bash
 mkdir terraform-ec2
@@ -15,6 +16,7 @@ cd terraform-ec2
 ```
 
 **2. Create Terraform Configuration File**
+
 Create a new Terraform file named `main.tf`:
 ```bash
 nano main.tf
@@ -42,12 +44,14 @@ output "instance_public_ip" {
 Save (`Ctrl+O`, then `Enter`) and exit (`Ctrl+X`).
 
 **3. Initialize Terraform**
+
 Run the following command to initialize Terraform, which will download the required provider plugins:
 ```bash
 terraform init
 ```
 
 **4. Preview the Terraform Execution Plan**
+
 To see what resources will be created, run:
 ```bash
 terraform plan
@@ -58,6 +62,7 @@ terraform validate
 ```
 
 **5. Apply the Terraform Plan to Launch EC2**
+
 Execute the Terraform script to create the EC2 instance:
 ```bash
 terraform apply
