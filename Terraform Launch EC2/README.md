@@ -1,19 +1,25 @@
 # Launch EC2 Instances Using Terraform 
-This section is to launch EC2 using scripts through Terraform. This project is running in AWS CloudShell environment.
+This guide walks through the launch of an EC2 instance in AWS using Terraform scripts from the AWS CloudShell environment.
+
+## Prerequisites
+- An active AWS account with permissions to create EC2 instances.
+- AWS CloudShell access.
+- Basic familiarity with AWS and Terraform.
 
 ## Steps
-1. Create a Terraform Directory
-Run these commands in CloudShell:
+**1. Create a Terraform Directory**
+Open your AWS CloudShell terminal and run the following commands to create and move into a working directory:
 ```bash
 mkdir terraform-ec2
 cd terraform-ec2
 ```
-2. Create Terraform Files
-Use `nano` (or `vim`) to create `main.tf`:
+
+**2. Create Terraform Configuration File**
+Create a new Terraform file named `main.tf`:
 ```bash
 nano main.tf
 ```
-Paste the following Terraform code:
+Then paste the following Terraform configuration:
 ```hcl
 # main.tf
 provider "aws" {
@@ -35,28 +41,33 @@ output "instance_public_ip" {
 ```
 Save (`Ctrl+O`, then `Enter`) and exit (`Ctrl+X`).
 
-3. Initialize Terraform
+**3. Initialize Terraform**
+Run the following command to initialize Terraform, which will download the required provider plugins:
 ```bash
 terraform init
 ```
-This sets up the AWS provider.
 
-4. Preview Changes
+**4. Preview the Terraform Execution Plan**
+To see what resources will be created, run:
 ```bash
 terraform plan
 ```
-This shows what resources will be created.
-You can also run `terraform validate` to check your configuration.
+(Optional) Validate your Terraform files:
+```bash
+terraform validate
+```
 
-5. Apply the Terraform Script
+**5. Apply the Terraform Plan to Launch EC2**
+Execute the Terraform script to create the EC2 instance:
 ```bash
 terraform apply
 ```
-Type `yes` when prompted to confirm.
+When prompted, type `yes` to confirm.
+After the apply completes, the public IP of the instance will be displayed.
 
-6. Clean Up (Optional)
-To delete the EC2 instance later:
+**6. Clean Up (Optional)**
+Once done, to terminate the EC2 instance and clean up the resources, run:
 ```bash
 terraform destroy
 ```
-Type `yes` to confirm.
+Confirm with `yes` when prompted.
