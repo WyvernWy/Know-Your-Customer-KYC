@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GeoServer WFS Sample</title>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.3.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.3.0/ol.css">
+    <style>
+        #map { width: 100vw; height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        const vectorSource = new ol.source.Vector({
+            format: new ol.format.GeoJSON(),
+            url: function (extent) {
+                return 'http://ec2-18-183-86-75.ap-northeast-1.compute.amazonaws.com:8080/geoserver/tiger/ows?' +
+                    'service=WFS&' +
+                    'version=1.0.0&' +
+                    'request=GetFeature&' +
+                    'typename=tiger:tiger_roads&' +
+                    'outputFormat=application/json&';
+            },
+            // 使用 bbox 策略，只加载当前视图范围的数据
+            strategy: ol.loadingstrategy.bbox
+        });
+
+        const vectorLayer = new ol.layer.Vector({
+            source: vectorSource,
+            style: new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: '#ff0000',
+                    width: 2
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(255,0,0,0.1)'
+                })
+            })
+        });
+
+        const map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                }),
+                vectorLayer
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([-73.9671125, 40.7811995]),
+                zoom: 10
+            })
+        });
+    </script>
+</body>
+</html>

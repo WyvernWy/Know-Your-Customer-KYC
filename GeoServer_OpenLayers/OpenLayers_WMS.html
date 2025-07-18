@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GeoServer 地图展示示例</title>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.3.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.3.0/ol.css">
+    <style>
+        #map { width: 100vw; height: 100vh;}
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        const map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()   // 可选择添加底图
+                }),
+                new ol.layer.Image({
+                    source: new ol.source.ImageWMS({
+                        url: 'http://ec2-18-183-86-75.ap-northeast-1.compute.amazonaws.com:8080/geoserver/wms',
+                        params: {
+                            'LAYERS': 'tiger:tiger_roads', // 格式：工作区:图层名
+                            'TILED': true
+                        },
+                        serverType: 'geoserver'
+                    })
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([-73.9671125, 40.7811995]),   // 替换成你需要的中心点
+                zoom: 12
+            })
+        });
+    </script>
+</body>
+</html>
