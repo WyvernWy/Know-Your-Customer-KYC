@@ -13,3 +13,4 @@ This presentation demonstrates a web-based geospatial data visualization system 
 3. Publish layers as both WMS (Web Map Service) and WFS (Web Feature Service)
 
 ### 2. HTML Implementation with OpenLayers
+![Uploading Geospatial Data Viewer Sample.png…]()
